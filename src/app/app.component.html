@@ -1,11 +1,9 @@
 <div class="container">
-  <app-cockpit (userAdded)="onUserCreated($event)"></app-cockpit>
+  <app-form (bookAdded)="bookCreated($event)"></app-form>
   <hr>
-
   <div class="row">
     <div class="col-xs-12">
-      <h3>User listing</h3>
-        <app-user-list  *ngFor="let user of users" [user]="user"></app-user-list>
+      <app-book-elements *ngFor="let book of books" [serBook]="book"></app-book-elements>
     </div>
   </div>
 </div>

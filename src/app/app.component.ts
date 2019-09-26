@@ -6,12 +6,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  users = [];
+  books = [{name: 'test book', author: 'test author'}];
 
-  onUserCreated(userData) {
-    this.users.push({
-      name: userData.name,
-      email: userData.email,
+  bookCreated(bookData) {
+    this.books.push({
+      name: bookData.name,
+      author: bookData.author
     });
   }
 
