@@ -6,21 +6,13 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  serverElements = [];
+  users = [];
 
-  onServerCreated(serverData: { serverName: string, serverContent: string }) {
-    this.serverElements.push({
-      type: 'server',
-      name: serverData.serverName,
-      content: serverData.serverContent
+  onUserCreated(userData) {
+    this.users.push({
+      name: userData.name,
+      email: userData.email,
     });
   }
 
-  onBlueprintCreated(serverData: { serverName: string, serverContent: string }) {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: serverData.serverName,
-      content: serverData.serverContent,
-    });
-  }
 }
