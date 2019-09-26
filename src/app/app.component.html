@@ -1,9 +1,10 @@
 <div class="container">
-  <app-form (bookAdded)="bookCreated($event)"></app-form>
-  <hr>
-  <div class="row">
-    <div class="col-xs-12">
-      <app-book-elements *ngFor="let book of books" [serBook]="book"></app-book-elements>
-    </div>
-  </div>
+  <h1>Game test</h1>
+  <app-game-control (start)="gameStarted($event)"></app-game-control>
+  <app-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"></app-odd>
+  <app-even *ngFor="let evenNumber of evenNumbers" [number]="evenNumber"></app-even>
+
+<!--  <div class="panel panel-default">-->
+<!--    <div class="panel-body">{{ event }}</div>-->
+<!--  </div>-->
 </div>
