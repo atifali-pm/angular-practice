@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Add or edit books</h1>
+    <label for="">name</label>
+    <input type="text" name="name" class="form-control" [(ngModel)]="name">
+    <label for="">author</label>
+    <input type="text" name="author" class="form-control" [(ngModel)]="author">
+    <br>
+    <button type="button" class="btn btn-primary" (click)="onAddBook()">Save</button>
+  </div>
+</div>
