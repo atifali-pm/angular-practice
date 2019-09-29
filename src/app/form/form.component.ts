@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {BookService} from '../book.service';
 
 @Component({
   selector: 'app-form',
@@ -6,22 +7,22 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  // @ts-ignore
+  @ViewChild('nameInput') name: ElementRef;
+  // @ts-ignore
+  @ViewChild('authorInput') author: ElementRef;
 
-  @Output() bookAdded = new EventEmitter();
-  name: string;
-  author: string;
-
-  constructor() {
+  constructor(private bookService: BookService) {
   }
 
   ngOnInit() {
   }
 
   onAddBook() {
-    this.bookAdded.emit({
-      name: this.name,
-      author: this.author
-    });
+    const Name = this.name.nativeElement.value;
+    const Author = this.author.nativeElement.value;
+
+    this.bookService.onAddBook({name: Name, author: Author});
   }
 
 }

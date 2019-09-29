@@ -1,18 +1,26 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BookService} from "./book.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [BookService]
 })
 export class AppComponent {
-  books = [{name: 'test book', author: 'test author'}];
+  books = [];
 
-  bookCreated(bookData) {
-    this.books.push({
-      name: bookData.name,
-      author: bookData.author
-    });
+  constructor(private bookService: BookService) {
+  }
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit() {
+    this.bookService.newBookAdded
+      .subscribe(
+        (book) => {
+          this.books = book;
+        }
+      );
   }
 
 }
