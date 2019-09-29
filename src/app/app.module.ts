@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import { CockpitComponent } from './cockpit/cockpit.component';
-import { ServerElementComponent } from './server-element/server-element.component';
+import { HeaderComponent } from './header/header.component';
+import { ProjectComponent } from './project/project.component';
+import { CategoryComponent } from './category/category.component';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CockpitComponent,
-    ServerElementComponent,
+    HeaderComponent,
+    ProjectComponent,
+    CategoryComponent,
+    TaskComponent,
   ],
   imports: [
     BrowserModule,
