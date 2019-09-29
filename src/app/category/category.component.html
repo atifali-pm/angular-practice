@@ -1,13 +1,10 @@
+<app-add-category></app-add-category>
+<hr>
 <div class="row">
   <div class="col-md-12">
     <div class="table-wrapper">
       <div class="table-title">
-        <div class="row">
-          <div class="col-md-8"><h2>Manage <b>Categories</b></h2></div>
-          <div class="col-md-4">
-            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
-          </div>
-        </div>
+        <h2>Category <b>List</b></h2>
       </div>
       <table class="table table-bordered">
         <thead>
@@ -18,27 +15,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>John Doe</td>
-          <td>Administration</td>
-          <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Peter Parker</td>
-          <td>Customer Service</td>
-          <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Fran Wilson</td>
-          <td>Human Resources</td>
+
+        <tr *ngFor="let category of categories">
+          <td>{{ category.name }}</td>
+          <td>{{ category.description}}</td>
           <td>
             <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

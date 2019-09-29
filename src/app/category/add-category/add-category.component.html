@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-4">
+    <h3>Add or Edit category</h3>
+    <form>
+          <label>Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            #nameInput>
+          <label>Description</label>
+          <input
+            type="text"
+            id="description"
+            class="form-control"
+            #descriptionInput>
+            <br>
+          <button class="btn btn-success" type="submit" (click)="addCategory()">Add</button>
+    </form>
+  </div>
+</div>
