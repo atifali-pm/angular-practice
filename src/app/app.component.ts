@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {CategoryService} from "./category/category.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,13 @@ import {CategoryService} from "./category/category.service";
   providers: [CategoryService]
 })
 export class AppComponent {
+
+  constructor(private router: Router) {
+  }
+
+
+  onLoadCategories() {
+    this.router.navigate(['/categories']);
+  }
 
 }

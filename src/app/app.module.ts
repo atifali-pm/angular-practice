@@ -7,13 +7,20 @@ import {HeaderComponent} from './header/header.component';
 import {ProjectComponent} from './project/project.component';
 import {CategoryComponent} from './category/category.component';
 import {TaskComponent} from './task/task.component';
+import {AddCategoryComponent} from './category/add-category/add-category.component';
+import {AddProjectComponent} from './project/add-project/add-project.component';
 import {RouterModule, Routes} from '@angular/router';
-import { AddCategoryComponent } from './category/add-category/add-category.component';
+import {SingleTaskComponent} from './task/single-task/single-task.component';
 
 const appRoutes: Routes = [
+  {path: '', component: CategoryComponent},
+  {path: 'categories', component: ProjectComponent},
   {path: 'projects', component: ProjectComponent},
-  {path: 'categories', component: CategoryComponent},
-  {path: 'tasks', component: TaskComponent}
+  {
+    path: 'tasks', component: TaskComponent, children: [
+      {path: ':id/:title', component: SingleTaskComponent}
+    ]
+  },
 ];
 
 @NgModule({
@@ -24,11 +31,13 @@ const appRoutes: Routes = [
     CategoryComponent,
     TaskComponent,
     AddCategoryComponent,
+    AddProjectComponent,
+    SingleTaskComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {useHash: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
