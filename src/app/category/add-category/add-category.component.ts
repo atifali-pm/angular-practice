@@ -1,29 +1,32 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CategoryService} from '../category.service';
 import {Category} from '../category';
+import {NgForm} from '@angular/forms';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.css']
 })
-export class AddCategoryComponent implements OnInit {
-  // @ts-ignore
-  @ViewChild('nameInput') nameInputRef: ElementRef;
-  // @ts-ignore
-  @ViewChild('descriptionInput') descriptionInputRef: ElementRef;
+export class AddCategoryComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
 
   constructor(private categoryService: CategoryService) {
   }
 
   ngOnInit() {
+//    this.subscription = this.categoryService.addedCategory()
   }
 
-  addCategory() {
-    const catName = this.nameInputRef.nativeElement.value;
-    const catDesc = this.descriptionInputRef.nativeElement.value;
-    const newCat = new Category(catName, catDesc);
-    this.categoryService.addedCategory(newCat);
+  onSubmit(form: NgForm) {
+    const value = form.value;
+    const newCategory = new Category(value.name, value.description);
+    this.categoryService.addCategory(newCategory);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
