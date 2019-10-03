@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "./user";
-import {UserService} from "./user.service";
+import {User} from './user';
+import {UserService} from './user.service';
 
 @Component({
   selector: 'app-users',
@@ -15,6 +15,14 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.uService.getUsers();
+  }
+
+  onEdit(id: number) {
+    this.uService.startEditing.next(id);
+  }
+
+  onDelete(id: number) {
+    this.uService.deleteUser(id);
   }
 
 }
