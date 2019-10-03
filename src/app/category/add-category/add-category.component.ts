@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CategoryService} from '../category.service';
 import {Category} from '../category';
 import {NgForm} from '@angular/forms';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-add-category',
@@ -10,13 +10,30 @@ import {Subscription} from "rxjs";
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent implements OnInit, OnDestroy {
+  // @ts-ignore
+  @ViewChild('f') clForm: NgForm;
   subscription: Subscription;
+  editMode = false;
+  editedItemIndex: number;
+  editedItem: Category;
 
   constructor(private categoryService: CategoryService) {
   }
 
   ngOnInit() {
 //    this.subscription = this.categoryService.addedCategory()
+    this.subscription = this.categoryService.startedEditing
+      .subscribe(
+        (index: number) => {
+          this.editMode = true;
+          this.editedItemIndex = index;
+          this.editedItem = this.categoryService.getCategory(index);
+          this.clForm.setValue({
+            name: this.editedItem.name,
+            description: this.editedItem.description,
+          });
+        }
+      );
   }
 
   onSubmit(form: NgForm) {

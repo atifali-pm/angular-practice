@@ -1,10 +1,10 @@
 import {Category} from './category';
-import {EventEmitter} from "@angular/core";
 import {Subject} from "rxjs";
 
 export class CategoryService {
 
   categoryAdded = new Subject<Category[]>();
+  startedEditing = new Subject<number>();
 
   private categories = [
     new Category('Test Category', 'Test Description'),
@@ -18,9 +18,8 @@ export class CategoryService {
     return this.categories;
   }
 
-  addedCategory(category: Category) {
-    this.categories.push(category);
-    this.categoryAdded.next(this.getCategories());
+  getCategory(index: number) {
+    return this.categories[index];
   }
 
   addCategory(category: Category) {

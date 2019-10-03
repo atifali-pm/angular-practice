@@ -22,30 +22,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>John Doe</td>
-          <td>Administration</td>
-          <td>Category 1</td>
-          <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Peter Parker</td>
-          <td>Customer Service</td>
-          <td>Category 1</td>
-          <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Fran Wilson</td>
-          <td>Human Resources</td>
-          <td>Category 1</td>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.name }}</td>
+          <td>{{ project.description }}</td>
+          <td>Category of project: {{ project.name }}</td>
           <td>
             <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

@@ -10,17 +10,19 @@ import {TaskComponent} from './task/task.component';
 import {AddCategoryComponent} from './category/add-category/add-category.component';
 import {AddProjectComponent} from './project/add-project/add-project.component';
 import {RouterModule, Routes} from '@angular/router';
-import {SingleTaskComponent} from './task/single-task/single-task.component';
+import {EditTaskComponent} from './task/edit-task/edit-task.component';
+import {TagsComponent} from './tags/tags.component';
+import {EditTagComponent} from './tags/edit-tag/edit-tag.component';
+import {UsersComponent} from './users/users.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   {path: '', component: CategoryComponent},
   {path: 'categories', component: ProjectComponent},
   {path: 'projects', component: ProjectComponent},
-  {
-    path: 'tasks', component: TaskComponent, children: [
-      {path: ':id/:title', component: SingleTaskComponent}
-    ]
-  },
+  {path: 'tasks', component: TaskComponent},
+  {path: 'tags', component: TagsComponent},
+  {path: 'users', component: UsersComponent}
 ];
 
 @NgModule({
@@ -32,7 +34,11 @@ const appRoutes: Routes = [
     TaskComponent,
     AddCategoryComponent,
     AddProjectComponent,
-    SingleTaskComponent,
+    EditTaskComponent,
+    TagsComponent,
+    EditTagComponent,
+    UsersComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

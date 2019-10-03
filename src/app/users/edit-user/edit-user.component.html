@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4">
-    <h3>Add or Edit project</h3>
+    <h3>Add or Edit User</h3>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <label>Name</label>
       <input
@@ -14,9 +14,9 @@
       <label>Description</label>
       <input
         type="text"
-        id="description"
+        id="email"
         class="form-control"
-        name="description"
+        name="email"
         ngModel
         required
       >
@@ -25,3 +25,4 @@
     </form>
   </div>
 </div>
+

@@ -18,4 +18,8 @@ export class CategoryComponent implements OnInit {
     this.categories = this.categoryService.getCategories();
   }
 
+  onEdit(id: number){
+    this.categoryService.startedEditing.next(id);
+  }
+
 }

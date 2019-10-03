@@ -1,27 +1,30 @@
-<app-add-category></app-add-category>
+<app-edit-tag></app-edit-tag>
 <hr>
 <div class="row">
   <div class="col-md-12">
     <div class="table-wrapper">
       <div class="table-title">
-        <h2>Category <b>List</b></h2>
+        <div class="row">
+          <div class="col-md-8"><h2>Manage <b>Tags</b></h2></div>
+        </div>
+        <router-outlet></router-outlet>
+        <hr>
       </div>
       <table class="table table-bordered">
         <thead>
         <tr>
-          <th>Name</th>
+          <th>Title</th>
           <th>Description</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-
-        <tr *ngFor="let category of categories; let id = index;">
-          <td>{{ category.name }}</td>
-          <td>{{ category.description}}</td>
+        <tr *ngFor="let tag of tags">
+          <td>{{ tag.name }}</td>
+          <td>{{ tag.description }}</td>
           <td>
             <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a (click)="onEdit(id)" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>
