@@ -1,14 +1,19 @@
 import {Project} from './project';
 import {Subject} from 'rxjs';
+import {Injectable} from "@angular/core";
+
 
 export class ProjectService {
   projectAdded = new Subject<Project[]>();
   startedEditing = new Subject<number>();
-  projectChanged = new Subject<Project>();
+  projectChanged = new Subject<Project[]>();
 
   private projects = [
-    new Project('test Project1', 'test project 1 desc'),
-    new Project('test project 2', 'test project desc 2'),
+    new Project('test Project1', 'test project 1 desc',
+      {name: 'first Category', description: 'first category description'}),
+    new Project('test project 2', 'test project desc 2',
+      {name: 'second Category', description: 'second category description'}
+    ),
   ];
 
   constructor() {
