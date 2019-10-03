@@ -17,4 +17,12 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.projects = this.pService.getProjects();
   }
+
+  onEdit(index: number) {
+    this.pService.startedEditing.next(index);
+  }
+
+  onDelete(index: number){
+    this.pService.deleteProject(index);
+  }
 }

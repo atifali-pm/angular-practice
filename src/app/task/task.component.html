@@ -6,15 +6,8 @@
       <div class="table-title">
         <div class="row">
           <div class="col-md-8"><h2>Manage <b>Tasks</b></h2></div>
-<!--          <div class="col-md-2">-->
-<!--            <a class="fa fa-plus" routerLink="/tasks">Reload tasks</a>-->
-<!--          </div>-->
-<!--          <div class="col-md-2">-->
-<!--            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>-->
-<!--          </div>-->
         </div>
         <router-outlet></router-outlet>
-        <hr>
       </div>
       <table class="table table-bordered">
         <thead>
@@ -27,14 +20,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let task of tasks">
+        <tr *ngFor="let task of tasks; let id = index;">
           <td>{{ task.name }}</td>
           <td>{{ task.description }}</td>
           <td>Project 1 {{ task.name}}</td>
           <td>13 Dec 2019</td>
           <td>
-            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a (click)="onEdit(id)" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>

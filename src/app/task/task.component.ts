@@ -18,4 +18,8 @@ export class TaskComponent implements OnInit {
     this.tasks = this.tService.getTasks();
   }
 
+  onEdit(id: number){
+    this.tService.startEditing.next(id);
+  }
+
 }

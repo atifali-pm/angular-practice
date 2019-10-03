@@ -18,4 +18,12 @@ export class TagsComponent implements OnInit {
     this.tags = this.tagService.getTags();
   }
 
+  onEdit(id: number) {
+    this.tagService.startEditing.next(id);
+  }
+
+  onDelete(id: number){
+    this.tagService.deleteTag(id);
+  }
+
 }

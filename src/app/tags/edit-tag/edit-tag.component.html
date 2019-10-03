@@ -21,7 +21,7 @@
         required
       >
       <br>
-      <button class="btn btn-success" type="submit">Add</button>
+      <button class="btn btn-success" type="submit" [disabled]="f.invalid">{{ editMode ? 'Update' : 'Add' }}</button>
     </form>
   </div>
 </div>

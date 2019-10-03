@@ -3,6 +3,7 @@ import {Subject} from 'rxjs';
 
 export class TaskService {
   taskAdded = new Subject<Task[]>();
+  startEditing = new Subject<number>();
 
   private tasks = [
     new Task('Task test 1', 'Task test description 1'),
@@ -14,6 +15,10 @@ export class TaskService {
 
   getTasks() {
     return this.tasks;
+  }
+
+  getTask(id: number) {
+    return this.tasks[id];
   }
 
   addTask(task: Task) {
