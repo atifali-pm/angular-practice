@@ -1,6 +1,6 @@
 import {Category} from './category';
-import {Subject} from "rxjs";
-
+import {Subject} from 'rxjs';
+import {DataStorageService} from '../shared/data-storage.service';
 export class CategoryService {
 
   categoryAdded = new Subject<Category[]>();
@@ -8,15 +8,14 @@ export class CategoryService {
   categoryChanged = new Subject<Category[]>();
 
   private categories = [
-    new Category('Test Category', 'Test Description'),
-    new Category('Test Category 2', 'Test Description 2'),
+    new Category('first Category', 'first Description')
   ];
 
   constructor() {
   }
 
   getCategories() {
-    return this.categories;
+    return this.categories.slice();
   }
 
   getCategory(index: number) {
@@ -33,8 +32,13 @@ export class CategoryService {
     this.categoryChanged.next(this.categories.slice());
   }
 
+  setCategories(categories: Category[]) {
+    this.categories = categories;
+    this.categoryChanged.next(this.getCategories());
+  }
+
   deleteCategory(index: number) {
-    this.categories.splice(index , 1);
+    this.categories.splice(index, 1);
     this.categoryChanged.next(this.categories.slice());
   }
 }

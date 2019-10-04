@@ -3,6 +3,7 @@ import {CategoryService} from '../category.service';
 import {Category} from '../category';
 import {NgForm} from '@angular/forms';
 import {Subscription} from 'rxjs';
+import {DataStorageService} from "../../shared/data-storage.service";
 
 @Component({
   selector: 'app-add-category',
@@ -17,7 +18,7 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
   editedItemIndex: number;
   editedItem: Category;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private dataStorageS: DataStorageService) {
   }
 
   ngOnInit() {
@@ -47,6 +48,7 @@ export class AddCategoryComponent implements OnInit, OnDestroy {
     }
     form.reset();
     this.editMode = false;
+    this.dataStorageS.saveData();
   }
 
   ngOnDestroy(): void {

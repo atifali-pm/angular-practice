@@ -22,7 +22,7 @@
         <tr *ngFor="let project of projects; let id = index;">
           <td>{{ project.name }}</td>
           <td>{{ project.description }}</td>
-          <td>{{ project.category.name }}</td>
+          <td>category</td>
           <td>
             <a (click)="onEdit(id)" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
             <a (click)="onDelete(id)" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>

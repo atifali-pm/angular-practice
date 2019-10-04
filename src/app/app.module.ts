@@ -15,11 +15,12 @@ import {TagsComponent} from './tags/tags.component';
 import {EditTagComponent} from './tags/edit-tag/edit-tag.component';
 import {UsersComponent} from './users/users.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
-import {CategoryService} from "./category/category.service";
-import {ProjectService} from "./project/project.service";
-import {TaskService} from "./task/task.service";
-import {TagsService} from "./tags/tags.service";
-import {UserService} from "./users/user.service";
+import {CategoryService} from './category/category.service';
+import {ProjectService} from './project/project.service';
+import {TaskService} from './task/task.service';
+import {TagsService} from './tags/tags.service';
+import {UserService} from './users/user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: CategoryComponent},
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes, {useHash: true})
   ],
   providers: [CategoryService, ProjectService, TaskService, TagsService, UserService],
