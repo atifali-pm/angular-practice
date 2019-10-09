@@ -21,6 +21,8 @@ import {TaskService} from './task/task.service';
 import {TagsService} from './tags/tags.service';
 import {UserService} from './users/user.service';
 import {HttpClientModule} from '@angular/common/http';
+import { DropdownDirective } from './shared/dropdown.directive';
+import {AppRoutingModule} from "./app-routing.module";
 
 const appRoutes: Routes = [
   {path: '', component: CategoryComponent},
@@ -45,12 +47,13 @@ const appRoutes: Routes = [
     EditTagComponent,
     UsersComponent,
     EditUserComponent,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, {useHash: true})
+    AppRoutingModule
   ],
   providers: [CategoryService, ProjectService, TaskService, TagsService, UserService],
   bootstrap: [AppComponent]

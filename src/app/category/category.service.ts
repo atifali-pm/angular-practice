@@ -3,13 +3,13 @@ import {Subject} from 'rxjs';
 import {DataStorageService} from '../shared/data-storage.service';
 export class CategoryService {
 
-  categoryAdded = new Subject<Category[]>();
   startedEditing = new Subject<number>();
   categoryChanged = new Subject<Category[]>();
 
-  private categories = [
-    new Category('first Category', 'first Description')
-  ];
+  // private categories = [
+  //   new Category('first Category', 'first Description')
+  // ];
+  private categories = [];
 
   constructor() {
   }
@@ -24,7 +24,7 @@ export class CategoryService {
 
   addCategory(category: Category) {
     this.categories.push(category);
-    this.categoryAdded.next(this.categories.slice());
+    this.categoryChanged.next(this.categories.slice());
   }
 
   updateCategory(index: number, category: Category) {

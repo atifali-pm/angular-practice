@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TagsService} from "./tags.service";
 import {Tag} from "./tag";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-tags',
@@ -11,7 +12,7 @@ export class TagsComponent implements OnInit {
 
   tags: Tag[];
 
-  constructor(private tagService: TagsService) {
+  constructor(private tagService: TagsService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -20,9 +21,10 @@ export class TagsComponent implements OnInit {
 
   onEdit(id: number) {
     this.tagService.startEditing.next(id);
+    this.router.navigate([id, 'edit'], {relativeTo: this.route});
   }
 
-  onDelete(id: number){
+  onDelete(id: number) {
     this.tagService.deleteTag(id);
   }
 

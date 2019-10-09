@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "./project.service";
 import {Project} from "./project";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-project',
@@ -11,18 +12,19 @@ export class ProjectComponent implements OnInit {
 
   projects: Project[];
 
-  constructor(private pService: ProjectService) {
+  constructor(private pService: ProjectService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.projects = this.pService.getProjects();
   }
 
-  onEdit(index: number) {
-    this.pService.startedEditing.next(index);
+  onEdit(id: number) {
+    this.pService.startedEditing.next(id);
+    this.router.navigate([id, 'edit'], {relativeTo: this.route});
   }
 
-  onDelete(index: number){
+  onDelete(index: number) {
     this.pService.deleteProject(index);
   }
 }

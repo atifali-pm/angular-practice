@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskService} from './task.service';
 import {Task} from './task';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-task',
@@ -11,15 +12,17 @@ export class TaskComponent implements OnInit {
 
   tasks: Task[];
 
-  constructor(private tService: TaskService) {
+  constructor(private tService: TaskService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.tasks = this.tService.getTasks();
   }
 
-  onEdit(id: number){
+  onEdit(id: number) {
     this.tService.startEditing.next(id);
+    this.router.navigate([id, 'edit'], {relativeTo: this.route});
+
   }
 
 }
