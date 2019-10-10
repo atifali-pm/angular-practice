@@ -22,7 +22,9 @@ import {TagsService} from './tags/tags.service';
 import {UserService} from './users/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import { DropdownDirective } from './shared/dropdown.directive';
-import {AppRoutingModule} from "./app-routing.module";
+import {AppRoutingModule} from './app-routing.module';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingComponent } from './loading/loading.component';
 
 const appRoutes: Routes = [
   {path: '', component: CategoryComponent},
@@ -48,6 +50,8 @@ const appRoutes: Routes = [
     UsersComponent,
     EditUserComponent,
     DropdownDirective,
+    AuthComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,9 +11,11 @@ import {AddProjectComponent} from './project/add-project/add-project.component';
 import {EditTaskComponent} from './task/edit-task/edit-task.component';
 import {EditTagComponent} from './tags/edit-tag/edit-tag.component';
 import {EditUserComponent} from './users/edit-user/edit-user.component';
+import {AuthComponent} from './auth/auth.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/categories', pathMatch: 'full'},
+  {path: 'auth', component: AuthComponent},
   {
     path: 'categories', component: CategoryComponent, children: [
       {path: ':id/edit', component: AddCategoryComponent}
