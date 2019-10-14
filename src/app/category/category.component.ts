@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Category} from './category';
 import {CategoryService} from './category.service';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DataStorageService} from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-category',
@@ -14,7 +15,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
   categories: Category[];
   subscription: Subscription;
 
-  constructor(private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {
+  constructor(private dataStorageService: DataStorageService, private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -23,6 +24,16 @@ export class CategoryComponent implements OnInit, OnDestroy {
     });
     this.categories = this.categoryService.getCategories();
   }
+
+  onSave() {
+    this.dataStorageService.saveData();
+  }
+
+
+  onFetch() {
+    this.dataStorageService.fetchData();
+  }
+
 
   onEdit(id: number) {
     this.categoryService.startedEditing.next(id);

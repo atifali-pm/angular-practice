@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CategoryService} from '../category/category.service';
 import {Category} from '../category/category';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStorageService {
 
-  constructor(private http: HttpClient, private cService: CategoryService) {
+  constructor(private http: HttpClient, private cService: CategoryService, private authService: AuthService) {
   }
 
   saveData() {

@@ -14,17 +14,18 @@ import {EditTaskComponent} from './task/edit-task/edit-task.component';
 import {TagsComponent} from './tags/tags.component';
 import {EditTagComponent} from './tags/edit-tag/edit-tag.component';
 import {UsersComponent} from './users/users.component';
-import { EditUserComponent } from './users/edit-user/edit-user.component';
+import {EditUserComponent} from './users/edit-user/edit-user.component';
 import {CategoryService} from './category/category.service';
 import {ProjectService} from './project/project.service';
 import {TaskService} from './task/task.service';
 import {TagsService} from './tags/tags.service';
 import {UserService} from './users/user.service';
-import {HttpClientModule} from '@angular/common/http';
-import { DropdownDirective } from './shared/dropdown.directive';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {DropdownDirective} from './shared/dropdown.directive';
 import {AppRoutingModule} from './app-routing.module';
-import { AuthComponent } from './auth/auth.component';
-import { LoadingComponent } from './loading/loading.component';
+import {AuthComponent} from './auth/auth.component';
+import {LoadingComponent} from './loading/loading.component';
+import {AuthInterceptorService} from './auth/auth-interceptor.service';
 
 const appRoutes: Routes = [
   {path: '', component: CategoryComponent},
@@ -59,7 +60,13 @@ const appRoutes: Routes = [
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [CategoryService, ProjectService, TaskService, TagsService, UserService],
+  providers: [CategoryService, ProjectService, TaskService, TagsService, UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

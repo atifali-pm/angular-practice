@@ -12,32 +12,33 @@ import {EditTaskComponent} from './task/edit-task/edit-task.component';
 import {EditTagComponent} from './tags/edit-tag/edit-tag.component';
 import {EditUserComponent} from './users/edit-user/edit-user.component';
 import {AuthComponent} from './auth/auth.component';
+import {AuthGuard} from "./auth/auth.guard";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/categories', pathMatch: 'full'},
   {path: 'auth', component: AuthComponent},
   {
-    path: 'categories', component: CategoryComponent, children: [
+    path: 'categories', component: CategoryComponent, canActivate: [AuthGuard], children: [
       {path: ':id/edit', component: AddCategoryComponent}
     ]
   },
   {
-    path: 'projects', component: ProjectComponent, children: [
+    path: 'projects', component: ProjectComponent, canActivate: [AuthGuard], children: [
       {path: ':id/edit', component: AddProjectComponent}
     ]
   },
   {
-    path: 'tasks', component: TaskComponent, children: [
+    path: 'tasks', component: TaskComponent, canActivate: [AuthGuard], children: [
       {path: ':id/edit', component: EditTaskComponent}
     ]
   },
   {
-    path: 'tags', component: TagsComponent, children: [
+    path: 'tags', component: TagsComponent, canActivate: [AuthGuard], children: [
       {path: ':id/edit', component: EditTagComponent}
     ]
   },
   {
-    path: 'users', component: UsersComponent, children: [
+    path: 'users', component: UsersComponent, canActivate: [AuthGuard], children: [
       {path: ':id/edit', component: EditUserComponent}
     ]
   },
